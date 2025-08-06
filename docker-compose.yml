@@ -24,7 +24,7 @@ services:
       context: ./frontend
       dockerfile: Dockerfile
       args:
-        - REACT_APP_SERVER_URL=https://fleetbase.paylab.kz:5000
+        - REACT_APP_SERVER_URL=https://fleetbase.paylab.kz:8081
     container_name: presentation_frontend
     restart: unless-stopped
     ports:
