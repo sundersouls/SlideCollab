@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = "file:./dev.db"
+}
+
+model Presentation {
+  id        String   @id
+  name      String
+  creatorId String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  slides Slide[]
+  
+  @@map("presentations")
+}
+
+model Slide {
+  id             String   @id
+  presentationId String
+  order          Int
+  elements       String   @default("[]") // JSON string
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+  
+  presentation Presentation @relation(fields: [presentationId], references: [id], onDelete: Cascade)
+  
+  @@map("slides")
+}
