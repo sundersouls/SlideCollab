@@ -23,7 +23,7 @@ model Slide {
   id             String   @id
   presentationId String
   order          Int
-  elements       String   @default("[]") // JSON string
+  elements       String   @default("[]") 
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   
